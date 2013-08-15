@@ -36,12 +36,9 @@ gem 'nifty-generators', '>= 0.4.0'
 # Use old style protected attributes.
 gem 'protected_attributes'
 
-group :test do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'rspec'
-end
-
 group :development, :test do
+  gem 'rspec'
+  gem 'webrat'
   gem 'rspec-rails',      ">= 2.0.0.beta"
 end
 
