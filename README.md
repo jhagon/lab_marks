@@ -1,4 +1,5 @@
-lab_marks
-=========
+Lab Marks Application
+=====================
 
-An application for entering, moderating and managing laboratory marks.
+A web-based application using Rails 4.0.0 enabling entering, moderation and
+management of laboratory marks.
