@@ -1,4 +1,7 @@
 LabMarks::Application.routes.draw do
+
+  resources :markers
+
   root  'pages#home'
 
 # match '/signup',  to: 'users#new',            via: 'get'

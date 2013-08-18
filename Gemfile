@@ -39,6 +39,7 @@ gem 'protected_attributes'
 group :development, :test do
   gem 'rspec'
   gem 'webrat'
+  gem 'annotate'
   gem 'rspec-rails',      ">= 2.0.0.beta"
 end
 
