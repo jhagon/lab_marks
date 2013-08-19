@@ -1,5 +1,6 @@
 LabMarks::Application.routes.draw do
 
+  resources :students
   resources :markers
 
   root  'pages#home'

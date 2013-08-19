@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130818134717) do
+ActiveRecord::Schema.define(version: 20130819113149) do
 
   create_table "markers", force: true do |t|
     t.string   "first"
@@ -25,5 +25,15 @@ ActiveRecord::Schema.define(version: 20130818134717) do
   end
 
   add_index "markers", ["email"], name: "index_markers_on_email", unique: true
+
+  create_table "students", force: true do |t|
+    t.string   "number"
+    t.string   "first"
+    t.string   "middle"
+    t.string   "last"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -1,0 +1,25 @@
+<% title "Students" %>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>First</th>
+    <th>Middle</th>
+    <th>Last</th>
+    <th>Email</th>
+  </tr>
+  <% for student in @students %>
+    <tr>
+      <td><%= student.number %></td>
+      <td><%= student.first %></td>
+      <td><%= student.middle %></td>
+      <td><%= student.last %></td>
+      <td><%= student.email %></td>
+      <td><%= link_to "Show", student %></td>
+      <td><%= link_to "Edit", edit_student_path(student) %></td>
+      <td><%= link_to "Destroy", student, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Student", new_student_path %></p>

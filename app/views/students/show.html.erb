@@ -1,0 +1,28 @@
+<% title "Student" %>
+
+<p>
+  <strong>Number:</strong>
+  <%= @student.number %>
+</p>
+<p>
+  <strong>First:</strong>
+  <%= @student.first %>
+</p>
+<p>
+  <strong>Middle:</strong>
+  <%= @student.middle %>
+</p>
+<p>
+  <strong>Last:</strong>
+  <%= @student.last %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @student.email %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_student_path(@student) %> |
+  <%= link_to "Destroy", @student, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", students_path %>
+</p>
