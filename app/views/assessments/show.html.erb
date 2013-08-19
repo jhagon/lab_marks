@@ -1,0 +1,20 @@
+<% title "Assessment" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @assessment.name %>
+</p>
+<p>
+  <strong>Value:</strong>
+  <%= @assessment.value %>
+</p>
+<p>
+  <strong>Desc:</strong>
+  <%= @assessment.desc %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_assessment_path(@assessment) %> |
+  <%= link_to "Destroy", @assessment, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", assessments_path %>
+</p>
