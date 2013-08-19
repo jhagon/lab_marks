@@ -36,6 +36,9 @@ gem 'nifty-generators', '>= 0.4.0'
 # Use old style protected attributes.
 gem 'protected_attributes'
 
+# Use some older error routines ('error_messages')
+gem 'dynamic_form'
+
 group :development, :test do
   gem 'rspec'
   gem 'webrat'

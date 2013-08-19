@@ -1,13 +1,16 @@
 class AssessmentsController < ApplicationController
   def index
+    @title = "List Assessments"
     @assessments = Assessment.all
   end
 
   def show
+    @title = "Show Assessment"
     @assessment = Assessment.find(params[:id])
   end
 
   def new
+    @title = "New Assessment"
     @assessment = Assessment.new
   end
 
@@ -21,6 +24,7 @@ class AssessmentsController < ApplicationController
   end
 
   def edit
+    @title = "Edit Assessment"
     @assessment = Assessment.find(params[:id])
   end
 

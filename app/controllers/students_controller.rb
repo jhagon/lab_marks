@@ -1,13 +1,16 @@
 class StudentsController < ApplicationController
   def index
+    @title = "List Students"
     @students = Student.all
   end
 
   def show
+    @title = "Show Student"
     @student = Student.find(params[:id])
   end
 
   def new
+    @title = "New Student"
     @student = Student.new
   end
 
@@ -21,6 +24,7 @@ class StudentsController < ApplicationController
   end
 
   def edit
+    @title = "Edit Student"
     @student = Student.find(params[:id])
   end
 

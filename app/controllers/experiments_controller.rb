@@ -1,13 +1,16 @@
 class ExperimentsController < ApplicationController
   def index
+    @title = "List Experiments"
     @experiments = Experiment.all
   end
 
   def show
+    @title = "Show Experiment"
     @experiment = Experiment.find(params[:id])
   end
 
   def new
+    @title = "New Experiment"
     @experiment = Experiment.new
   end
 
@@ -21,6 +24,7 @@ class ExperimentsController < ApplicationController
   end
 
   def edit
+    @title = "Edit Experiment"
     @experiment = Experiment.find(params[:id])
   end
 

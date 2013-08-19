@@ -1,10 +1,11 @@
 class MarkersController < ApplicationController
 
   def show
+    @title = "Show Marker"
     @marker = Marker.find(params[:id])
   end
 
   def new
-    @title = "Create New Marker"
+    @title = "New Marker"
   end
 end
