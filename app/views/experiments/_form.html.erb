@@ -1,0 +1,12 @@
+<%= form_for @experiment do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :desc %><br />
+    <%= f.text_field :desc %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

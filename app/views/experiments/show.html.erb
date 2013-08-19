@@ -1,0 +1,16 @@
+<% title "Experiment" %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @experiment.title %>
+</p>
+<p>
+  <strong>Desc:</strong>
+  <%= @experiment.desc %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_experiment_path(@experiment) %> |
+  <%= link_to "Destroy", @experiment, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", experiments_path %>
+</p>
