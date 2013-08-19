@@ -1,0 +1,34 @@
+<p>
+  <strong>Student:</strong>
+  <%= @sheet.student_id %>
+</p>
+<p>
+  <strong>Partner:</strong>
+  <%= @sheet.partner_id %>
+</p>
+<p>
+  <strong>Experiment:</strong>
+  <%= @sheet.experiment_id %>
+</p>
+<p>
+  <strong>Marker:</strong>
+  <%= @sheet.marker_id %>
+</p>
+<p>
+  <strong>Comments:</strong>
+  <%= @sheet.comments %>
+</p>
+<p>
+  <strong>Raw Mark:</strong>
+  <%= @sheet.raw_mark %>
+</p>
+<p>
+  <strong>Ret Mark:</strong>
+  <%= @sheet.ret_mark %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_sheet_path(@sheet) %> |
+  <%= link_to "Destroy", @sheet, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", sheets_path %>
+</p>
