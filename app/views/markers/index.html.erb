@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th>Abbr</th>
+    <th>First</th>
+    <th>Last</th>
+    <th>Email</th>
+    <th>Scaling</th>
+    <th>Admin</th>
+  </tr>
+  <% for marker in @markers %>
+    <tr>
+      <td><%= marker.abbr %></td>
+      <td><%= marker.first %></td>
+      <td><%= marker.last %></td>
+      <td><%= marker.email %></td>
+      <td><%= marker.scaling %></td>
+      <td><%= marker.admin %></td>
+      <td><%= link_to "Show", marker %></td>
+      <td><%= link_to "Edit", edit_marker_path(marker) %></td>
+      <td><%= link_to "Destroy", marker, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Marker", new_marker_path %></p>
