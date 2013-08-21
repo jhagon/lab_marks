@@ -9,6 +9,6 @@
 
 <p>
   <%= link_to "Edit", edit_experiment_path(@experiment) %> |
-  <%= link_to "Destroy", @experiment, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "Destroy", @experiment, method: :delete, data: { confirm: 'Are you sure?' } %> |
   <%= link_to "View All", experiments_path %>
 </p>

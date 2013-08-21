@@ -17,6 +17,6 @@
 
 <p>
   <%= link_to "Edit", edit_student_path(@student) %> |
-  <%= link_to "Destroy", @student, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "Destroy", @student, data: { confirm: 'Are you sure?' }, :method => :delete %> |
   <%= link_to "View All", students_path %>
 </p>
