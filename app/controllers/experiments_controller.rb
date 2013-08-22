@@ -1,4 +1,7 @@
 class ExperimentsController < ApplicationController
+
+  before_filter :authenticate
+
   def index
     @title = "List Experiments"
     @experiments = Experiment.all
@@ -42,4 +45,11 @@ class ExperimentsController < ApplicationController
     @experiment.destroy
     redirect_to experiments_url, :notice => "Successfully destroyed experiment."
   end
+
+private
+
+  def authenticate
+    deny_access unless signed_in? && is_admin?
+  end
+
 end

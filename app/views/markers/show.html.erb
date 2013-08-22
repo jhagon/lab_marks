@@ -1,1 +1,8 @@
 <%= "#{@marker.first} #{@marker.last}: #{@marker.email}" %>
+
+<p>
+  <%= link_to "Edit", edit_experiment_path(@marker) %> |
+  <%= link_to "Destroy", @marker, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%= link_to "View All", markers_path %>
+</p>
+

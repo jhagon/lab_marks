@@ -51,6 +51,11 @@ class Marker < ActiveRecord::Base
     return marker if marker.has_password?(submitted_password)
   end
 
+  def self.authenticate_with_salt(id, cookie_salt)
+    marker = find_by_id(id)
+    (marker && marker.salt == cookie_salt) ? marker : nil
+  end
+
   private
 
     def encrypt_password

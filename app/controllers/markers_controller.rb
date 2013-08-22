@@ -1,4 +1,6 @@
 class MarkersController < ApplicationController
+  before_filter :authenticate, :only => [:edit, :update, :new, :destroy, :index]
+  before_filter :correct_marker, :only => [:show]
 
   def index
     @title = "List Markers"
@@ -46,5 +48,16 @@ class MarkersController < ApplicationController
     @marker = Marker.find(params[:id])
     @marker.destroy
     redirect_to markers_url, :notice => "Successfully destroyed marker."
+  end
+
+private
+
+  def authenticate
+    deny_access unless signed_in? && is_admin?
+  end
+
+  def correct_marker
+    @marker = Marker.find(params[:id])
+    redirect_to(root_path) unless ( current_marker?(@marker) || is_admin? )
   end
 end
