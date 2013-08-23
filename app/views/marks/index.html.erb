@@ -1,0 +1,21 @@
+<% title "Marks" %>
+
+<table>
+  <tr>
+    <th>Score</th>
+    <th>Assessment</th>
+    <th>Sheet</th>
+  </tr>
+  <% for mark in @marks %>
+    <tr>
+      <td><%= mark.score %></td>
+      <td><%= mark.assessment_id %></td>
+      <td><%= mark.sheet_id %></td>
+      <td><%= link_to "Show", mark %></td>
+      <td><%= link_to "Edit", edit_mark_path(mark) %></td>
+      <td><%= link_to "Destroy", mark, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Mark", new_mark_path %></p>

@@ -13,4 +13,10 @@
 
 class Student < ActiveRecord::Base
   attr_accessible :number, :first, :middle, :last, :email
+
+  has_many :sheets
+
+  def name    
+    self.last + ',  ' + self.first  
+  end
 end

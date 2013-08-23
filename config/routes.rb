@@ -1,5 +1,6 @@
 LabMarks::Application.routes.draw do
 
+  resources :marks
   resources :sheets
   resources :assessments
   resources :experiments

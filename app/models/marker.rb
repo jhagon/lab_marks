@@ -22,6 +22,8 @@ class Marker < ActiveRecord::Base
   attr_accessible :first, :last, :email, :abbr, :scaling, 
                   :admin, :password, :password_confirmation
 
+  has_many :sheets
+
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :first, :presence => true,
@@ -54,6 +56,10 @@ class Marker < ActiveRecord::Base
   def self.authenticate_with_salt(id, cookie_salt)
     marker = find_by_id(id)
     (marker && marker.salt == cookie_salt) ? marker : nil
+  end
+
+  def name
+    self.last + ',  ' + self.first
   end
 
   private

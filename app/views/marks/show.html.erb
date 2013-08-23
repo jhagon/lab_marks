@@ -1,0 +1,20 @@
+<% title "Mark" %>
+
+<p>
+  <strong>Score:</strong>
+  <%= @mark.score %>
+</p>
+<p>
+  <strong>Assessment:</strong>
+  <%= @mark.assessment_id %>
+</p>
+<p>
+  <strong>Sheet:</strong>
+  <%= @mark.sheet_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_mark_path(@mark) %> |
+  <%= link_to "Destroy", @mark, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", marks_path %>
+</p>

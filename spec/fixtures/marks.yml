@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: marks
+#
+#  id            :integer          not null, primary key
+#  score         :integer
+#  assessment_id :integer
+#  sheet_id      :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
+one:
+  score: 
+  assessment_id: 
+  sheet_id: 
+
+two:
+  score: 
+  assessment_id: 
+  sheet_id: 

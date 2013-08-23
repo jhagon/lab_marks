@@ -12,4 +12,7 @@
 
 class Assessment < ActiveRecord::Base
   attr_accessible :name, :value, :desc
+
+  has_many :marks
+  has_many :sheets, through: :marks
 end
