@@ -1,4 +1,7 @@
 class SheetsController < ApplicationController
+
+  before_filter :authenticate, :only => [:destroy]
+
   def index
     @sheets = Sheet.all
     @title = "List Mark Sheets"
@@ -6,6 +9,8 @@ class SheetsController < ApplicationController
 
   def show
     @sheet = Sheet.find(params[:id])
+    @returned_mark = (@sheet.total_mark * @sheet.marker.scaling / 20 ) * 100.0
+    @returned_mark = @returned_mark.to_int
     @title = "Show Mark Sheet"
   end
 
@@ -42,4 +47,11 @@ class SheetsController < ApplicationController
     @sheet.destroy
     redirect_to sheets_url, :notice => "Successfully destroyed sheet."
   end
+
+private
+
+  def authenticate
+    deny_access unless signed_in? && is_admin?
+  end
+
 end

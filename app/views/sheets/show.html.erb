@@ -1,34 +1,75 @@
-<p>
-  <strong>Student:</strong>
-  <%= @sheet.student_id %>
-</p>
-<p>
-  <strong>Partner:</strong>
-  <%= @sheet.partner_id %>
-</p>
-<p>
-  <strong>Experiment:</strong>
-  <%= @sheet.experiment_id %>
-</p>
-<p>
-  <strong>Marker:</strong>
-  <%= @sheet.marker_id %>
-</p>
-<p>
-  <strong>Comments:</strong>
-  <%= @sheet.comments %>
-</p>
-<p>
-  <strong>Raw Mark:</strong>
-  <%= @sheet.raw_mark %>
-</p>
-<p>
-  <strong>Ret Mark:</strong>
-  <%= @sheet.ret_mark %>
-</p>
+  <div style="width:"400px;">
+  <div style="width:"400px;">
+  <nav class="bordered">
+    <ul>
+    <li><%= link_to "Edit", edit_sheet_path(@sheet) %> </li>
+    <% if is_admin? %>
+      <li><%= link_to "Destroy", @sheet, :confirm => 'Are you sure?', :method => :delete %> </li>
+    <% end %>
+     <li><%= link_to "View All", sheets_path %></li>
+    </ul>
+  </nav>
+  <p style="font-size:small;">
+  Marksheet created at: <%= @sheet.created_at %>;
+  last modified by marker at <%= @sheet.updated_at %>.
+  </p>
+  </div>
+  <table class="no-zebra">
+    <tr style="background:#eef;">
+      <td>
+        <b>Student:</b> 
+        <%= "#{@sheet.student.first} #{@sheet.student.last}" %>
+      </td>
+      <td>
+        <b>Partner:</b> 
+        <%= "#{@sheet.partner.first} #{@sheet.partner.last}" %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b>Experiment:</b> 
+        <%= @sheet.experiment.title %>
+      </td>
+      <td>
+        <b>Marker:</b> 
+        <%= "#{@sheet.marker.first} #{@sheet.marker.last}" %>
+      </td>
+    </tr>
+  </table>
 
-<p>
-  <%= link_to "Edit", edit_sheet_path(@sheet) %> |
-  <%= link_to "Destroy", @sheet, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", sheets_path %>
-</p>
+  <div style="width:40%;float:right">
+    <b>Marks Breakdown</b><br />
+    <table class="no-zebra">
+      <tr>
+        <td> <%= MARK1_CRITERION %></td>
+        <td style="text-align:right;"> <%= @sheet.mark1 %> </td>
+      </tr>
+      <tr>
+        <td> <%= MARK2_CRITERION %></td>
+        <td style="text-align:right;"> <%= @sheet.mark2 %> </td>
+      </tr>
+      <tr>
+        <td> <%= MARK3_CRITERION %> </td>
+        <td style="text-align:right;"> <%= @sheet.mark3 %> </td>
+      </tr>
+      <tr>
+        <td> <%= MARK4_CRITERION %> </td>
+        <td style="text-align:right;"> <%= @sheet.mark4 %> </td>
+      </tr>
+      <tr class="border-top-thin">
+        <td> Total Mark (/20)</td>
+        <td style="text-align:right;"> <%= @sheet.total_mark %> </td>
+      </tr>
+      <tr class="border-top-thick">
+        <td> Returned Mark (%)</td>
+        <td style="text-align:right;"> <%= @returned_mark %> </td>
+      </tr>
+    </table>
+  </div>
+  <div style="width:50%;">
+    <b>Comments</b></br>
+    <div style="height:12em;border:1px solid black;">
+      <%= @sheet.comments %>
+    </div>
+  </div>
+</div>

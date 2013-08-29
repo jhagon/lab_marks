@@ -1,35 +1,58 @@
 <%= form_for @sheet do |f| %>
   <%= f.error_messages %>
   <div style="width:"400px">
-  <p>
-    <%= f.label :student_id %><br />
-    <%= collection_select(:sheet, :student_id, Student.all, :id, :name) %>
-  </p>
-  <p>
-    <%= f.label :partner_id %><br />
-    <%= collection_select(:sheet, :partner_id, Student.all, :id, :name) %>
-  </p>
-  <p>
-    <%= f.label :experiment_id %><br />
-    <%= collection_select(:sheet, :experiment_id, Experiment.all, :id, :title) %>
-  </p>
-  <p>
-    <%= f.label :marker_id %><br />
-    <%= collection_select(:sheet, :marker_id, Marker.all, :id, :name,
+  <table class="no-zebra">
+    <tr style="background:#eef;">
+      <td>
+        <%= f.label :student_id %><br />
+        <%= collection_select(:sheet, :student_id, Student.order('last ASC').all, :id, :name) %>
+      </td>
+      <td>
+        <%= f.label :partner_id %><br />
+        <%= collection_select(:sheet, :partner_id, Student.order('last ASC').all, :id, :name) %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :experiment_id %><br />
+        <%= collection_select(:sheet, :experiment_id, Experiment.all, :id, :title) %>
+      </td>
+      <td>
+        <%= f.label :marker_id %><br />
+        <%= collection_select(:sheet, :marker_id, Marker.all, :id, :name,
     {:selected => current_marker.id}) %>
-  </p>
+      </td>
+    </tr>
+  </table>
   </div>
 
   <div style="float:right;width:400px;">
     <%= f.label "Marks Breakdown" %><br />
-    <table>
-    <% f.fields_for :assessments do |builder| %>
+    <table class="no-zebra">
       <tr>
-        <td> <%= builder.name %> </td>
-        <td> <%= builder.value %> </td>
-        <td> mark goes here </td>
+        <td> Mark Criterion 1 (/5)</td>
+        <td> <%= f.text_field :mark1 %> </td>
       </tr>
-    <% end %>
+      <tr>
+        <td> Mark Criterion 2 (/5)</td>
+        <td> <%= f.text_field :mark2 %> </td>
+      </tr>
+      <tr>
+        <td> Mark Criterion 3 (/5)</td>
+        <td> <%= f.text_field :mark3 %> </td>
+      </tr>
+      <tr>
+        <td> Mark Criterion 4 (/5)</td>
+        <td> <%= f.text_field :mark4 %> </td>
+      </tr>
+      <tr>
+        <td>  <%= f.label :raw_mark, 'Total Mark /20' %><br /> </td>
+        <td>  <%= f.text_field :raw_mark %> </td>
+      </tr>
+      <tr>
+        <td>  <%= f.label :ret_mark, 'Returned Mark (%)' %><br /> </td>
+        <td>  <%= f.text_field :ret_mark %> </td>
+      </tr>
     </table>
   </div>
 
@@ -37,14 +60,6 @@
   <p>
     <%= f.label :comments %><br />
     <%= f.text_area :comments %>
-  </p>
-  <p>
-    <%= f.label :raw_mark %><br />
-    <%= f.text_field :raw_mark %>
-  </p>
-  <p>
-    <%= f.label :ret_mark %><br />
-    <%= f.text_field :ret_mark %>
   </p>
   <p><%= f.submit %></p>
 <% end %>

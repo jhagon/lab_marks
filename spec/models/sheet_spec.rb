@@ -12,6 +12,10 @@
 #  ret_mark      :float
 #  created_at    :datetime
 #  updated_at    :datetime
+#  mark1         :integer
+#  mark2         :integer
+#  mark3         :integer
+#  mark4         :integer
 #
 
 require File.dirname(__FILE__) + '/../spec_helper'

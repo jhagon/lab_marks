@@ -86,6 +86,16 @@ nav ul li a:hover {
   border-radius: 10px;
 }
 
+/* simple border */
+
+.bordered {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  border: 2px solid gray;
+}
+
+
 /* Footer */
 
 footer {
@@ -141,3 +151,16 @@ footer nav {
   list-style: square;
 }
 
+table.no-zebra tbody tr:nth-child(even) td,
+table.no-zebra tbody tr.even td {
+  background: transparent;
+}
+
+tr.border-top-thin td {
+  border-top:1pt solid black;
+}
+
+tr.border-top-thick td {
+  border-top:2pt solid black;
+  font-weight:bold;
+}

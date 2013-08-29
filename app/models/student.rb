@@ -15,6 +15,7 @@ class Student < ActiveRecord::Base
   attr_accessible :number, :first, :middle, :last, :email
 
   has_many :sheets
+  has_many :sheets, :class_name => 'Sheet', :foreign_key => 'partner_id'
 
   def name    
     self.last + ',  ' + self.first  

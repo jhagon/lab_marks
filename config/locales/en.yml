@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      sheet:
+        mark1: "criterion 1 mark"
+        mark2: "criterion 2 mark"
+        mark3: "criterion 3 mark"
+        mark4: "criterion 4 mark"

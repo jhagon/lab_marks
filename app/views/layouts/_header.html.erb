@@ -2,6 +2,10 @@
   <%= image_tag("logo.png", :alt => "LabMarks", :text => "LabMarks",
                             :class => "round") %>
   <nav class="round">
+    <% if signed_in? %>
+      Signed in as
+      <%= "#{current_marker.first} #{current_marker.last}" %>
+    <% end %>
     <ul>
     <li><%= link_to "Home",    root_path %></li>
     <li><%= link_to "Help",    help_path %></li>

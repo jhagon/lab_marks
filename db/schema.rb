@@ -11,15 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130822142824) do
-
-  create_table "assessments", force: true do |t|
-    t.string   "name"
-    t.integer  "value"
-    t.text     "desc"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20130827103654) do
 
   create_table "experiments", force: true do |t|
     t.string   "title"
@@ -43,14 +35,6 @@ ActiveRecord::Schema.define(version: 20130822142824) do
 
   add_index "markers", ["email"], name: "index_markers_on_email", unique: true
 
-  create_table "marks", force: true do |t|
-    t.integer  "score"
-    t.integer  "assessment_id"
-    t.integer  "sheet_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "sheets", force: true do |t|
     t.integer  "student_id"
     t.integer  "partner_id"
@@ -61,6 +45,10 @@ ActiveRecord::Schema.define(version: 20130822142824) do
     t.float    "ret_mark"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "mark1"
+    t.integer  "mark2"
+    t.integer  "mark3"
+    t.integer  "mark4"
   end
 
   create_table "students", force: true do |t|
