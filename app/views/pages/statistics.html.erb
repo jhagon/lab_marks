@@ -1,0 +1,58 @@
+<h1>Statistics</h1>
+<p>
+below is the average mark matrix across all markers and experiments.
+</p>
+<table>
+  <tr>
+    <th>Marker</th>
+    <th>Scaling</th>
+    <th style="text-align:right">Exp1</th>
+    <th style="text-align:right">Exp2</th>
+    <th style="text-align:right">Exp3</th>
+    <th style="text-align:right">Exp4</th>
+    <th style="text-align:right">Exp5</th>
+    <th style="text-align:right">MrkAv</th>
+  </tr>
+  <% for marker in @markers %>
+
+    <% unless marker_average(marker.id).nil? %>
+
+      <tr>
+        <td><%= "#{marker.last},#{marker.first}" %></td>
+        <td>
+        <%= form_for marker do |f| %>
+        <%= f.error_messages %>
+        <%= f.text_field :scaling, :size => 5 %>
+        <%= f.submit "Update" %>
+        <% end %>
+        </td>
+
+
+      <% for experiment in @experiments %>
+        <td style="text-align:right"><%= number_with_precision(
+                marker_experiment_average(marker.id, experiment.id),
+                :precision => 2) %></td>
+      <% end %>
+        <td style="text-align:right"><%= number_with_precision(
+                marker_average(marker.id),
+                :precision => 2) %></td>
+
+      </tr>
+
+    <% end %>
+  <% end %>
+  <tr>
+    <td>
+    </td>
+    <td>
+    </td>
+  <% for experiment in @experiments %>
+    <td style="text-align:right"><%= number_with_precision(
+              experiment_average(experiment.id),
+              :precision => 2) %></td>
+  <% end %>
+  <td style="text-align:right">
+    <%= number_with_precision(@average, :precision => 2) %>
+  <td>
+  </tr>
+</table>

@@ -10,17 +10,19 @@ LabMarks::Application.routes.draw do
 
   root  'pages#home'
 
-  match '/signup',  to: 'markers#new',      via: 'get'
-  match '/signin',  to: 'sessions#new',     via: 'get'
-  match '/signout', to: 'sessions#destroy', via: 'delete'
-  match '/help',    to: 'pages#help',       via: 'get'
-  match '/about',   to: 'pages#about',      via: 'get'
-  match '/contact', to: 'pages#contact',    via: 'get'
+  match '/signup',  	to: 'markers#new',      via: 'get'
+  match '/signin',  	to: 'sessions#new',     via: 'get'
+  match '/signout', 	to: 'sessions#destroy', via: 'delete'
+  match '/help',    	to: 'pages#help',       via: 'get'
+  match '/about',   	to: 'pages#about',      via: 'get'
+  match '/statistics',  to: 'pages#statistics', via: 'get'
+  match '/contact', 	to: 'pages#contact',    via: 'get'
 
   get "pages/home"
   get "pages/contact"
   get "pages/about"
   get "pages/help"
+  get "pages/statistics"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

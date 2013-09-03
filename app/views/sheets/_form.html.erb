@@ -30,28 +30,20 @@
     <%= f.label "Marks Breakdown" %><br />
     <table class="no-zebra">
       <tr>
-        <td> Mark Criterion 1 (/5)</td>
-        <td> <%= f.text_field :mark1 %> </td>
+        <td> <%= MARK1_CRITERION %></td>
+        <td style="text-align:center;"> <%= f.text_field(:mark1, size: 3) %> </td>
       </tr>
       <tr>
-        <td> Mark Criterion 2 (/5)</td>
-        <td> <%= f.text_field :mark2 %> </td>
+        <td> <%= MARK2_CRITERION %></td>
+        <td style="text-align:center;"> <%= f.text_field(:mark2, size: 3) %> </td>
       </tr>
       <tr>
-        <td> Mark Criterion 3 (/5)</td>
-        <td> <%= f.text_field :mark3 %> </td>
+        <td> <%= MARK3_CRITERION %></td>
+        <td style="text-align:center;"> <%= f.text_field(:mark3, size: 3) %> </td>
       </tr>
       <tr>
-        <td> Mark Criterion 4 (/5)</td>
-        <td> <%= f.text_field :mark4 %> </td>
-      </tr>
-      <tr>
-        <td>  <%= f.label :raw_mark, 'Total Mark /20' %><br /> </td>
-        <td>  <%= f.text_field :raw_mark %> </td>
-      </tr>
-      <tr>
-        <td>  <%= f.label :ret_mark, 'Returned Mark (%)' %><br /> </td>
-        <td>  <%= f.text_field :ret_mark %> </td>
+        <td> <%= MARK4_CRITERION %></td>
+        <td style="text-align:center;"> <%= f.text_field(:mark4, size: 3) %> </td>
       </tr>
     </table>
   </div>

@@ -1,8 +1,9 @@
-<table>
+<%= will_paginate @students %>
+<table class="pretty">
   <tr>
     <th>Number</th>
     <th>First</th>
-    <th>Last</th>
+    <th><%= sortable "last", "Last" %></th>
     <th>Email</th>
   </tr>
   <% for student in @students %>

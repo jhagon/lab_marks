@@ -5,8 +5,8 @@
     <li><%= link_to "Edit", edit_sheet_path(@sheet) %> </li>
     <% if is_admin? %>
       <li><%= link_to "Destroy", @sheet, :confirm => 'Are you sure?', :method => :delete %> </li>
+      <li><%= link_to "View All", current_marker %></li>
     <% end %>
-     <li><%= link_to "View All", sheets_path %></li>
     </ul>
   </nav>
   <p style="font-size:small;">

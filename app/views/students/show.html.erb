@@ -15,6 +15,43 @@
   <%= @student.email %>
 </p>
 
+<% unless @sheets.empty? %>
+
+<h3>Completed Experiments</h3>
+<%= will_paginate @sheets %>
+<table class="pretty">
+  <tr>
+    <th>Marker</th>
+    <th>Partner</th>
+    <th>Experiment</th>
+    <th><%= sortable "updated_at", "Updated" %></th>
+    <th>Total</th>
+    <th>Ret(%)</th>
+  </tr>
+  <% for sheet in @sheets %>
+    <tr>
+      <td><%= truncate("#{sheet.marker.last},#{sheet.marker.first}",
+              length: 20, separator: ' ')%></td>
+      <td><%= truncate("#{sheet.partner.last},#{sheet.partner.first}",
+              length: 20, separator: ' ')%></td>
+      <td><%= sheet.experiment.title %></td>
+      <td><%= sheet.updated_at %></td>
+      <td style="text-align:center;"><%= sheet.total_mark %></td>
+      <td style="text-align:center;"><%= (100 * sheet.return_mark).to_i %></td>
+      <td><%= link_to "Show", sheet %></td>
+      <td><%= link_to "Edit", edit_sheet_path(sheet) %></td>
+      </td>
+      <td><% if is_admin? %>
+        <%= link_to "Destroy", sheet, :confirm => 'Are you sure?', :method => :delete %>
+      <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<% end %>
+
+
 <p>
   <%= link_to "Edit", edit_student_path(@student) %> |
   <%= link_to "Destroy", @student, data: { confirm: 'Are you sure?' }, :method => :delete %> |

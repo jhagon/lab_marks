@@ -1,8 +1,9 @@
-<table>
+<%=request.original_url%>
+<table class="pretty">
   <tr>
     <th>Abbr</th>
-    <th>First</th>
-    <th>Last</th>
+    <th>Name</th>
+    <th># Sheets</th>
     <th>Email</th>
     <th>Scaling</th>
     <th>Admin</th>
@@ -10,8 +11,8 @@
   <% for marker in @markers %>
     <tr>
       <td><%= marker.abbr %></td>
-      <td><%= marker.first %></td>
-      <td><%= marker.last %></td>
+      <td><%= "#{marker.last},#{marker.first}" %></td>
+      <td><%= marker.sheets.count %></td>
       <td><%= marker.email %></td>
       <td><%= marker.scaling %></td>
       <td><%= marker.admin ? "Yes" : "No" %></td>

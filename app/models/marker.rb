@@ -35,6 +35,8 @@ class Marker < ActiveRecord::Base
                     :uniqueness => { :case_sensitive => false }
   validates :abbr, :presence => true
 
+  validates :scaling, numericality: {greater_than_or_equal_to: 0}
+
   # automatically create a virtual attribute 'password_confirmation'
 
   validates :password, :presence	=> true,

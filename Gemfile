@@ -39,6 +39,9 @@ gem 'protected_attributes'
 # Use some older error routines ('error_messages')
 gem 'dynamic_form'
 
+# Use will_paginate to paginate index pages.
+gem 'will_paginate', '~> 3.0'
+
 group :development, :test do
   gem 'rspec'
   gem 'webrat'

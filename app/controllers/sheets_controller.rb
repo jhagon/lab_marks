@@ -1,9 +1,11 @@
 class SheetsController < ApplicationController
 
   before_filter :authenticate, :only => [:destroy]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @sheets = Sheet.all
+    @sheets = Sheet.paginate(:page => params[:page]).all( :joins => [:experiment, :student],
+                         :order => "#{sort_column} #{sort_direction}")
     @title = "List Mark Sheets"
   end
 
@@ -52,6 +54,15 @@ private
 
   def authenticate
     deny_access unless signed_in? && is_admin?
+  end
+
+  def sort_column
+    cols = Sheet.column_names + Experiment.column_names + Student.column_names
+    cols.include?(params[:sort]) ? params[:sort] : "last"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 end

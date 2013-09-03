@@ -22,7 +22,11 @@ module SessionsHelper
   end
 
   def is_admin?
-    current_marker.admin
+    signed_in? ? current_marker.admin : false
+  end
+
+  def is_admin_and_not_in_user_edit?
+    is_admin? && !(request.original_url =~ /edit$/)
   end
 
   def deny_access

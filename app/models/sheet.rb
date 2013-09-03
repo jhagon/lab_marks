@@ -31,16 +31,26 @@ class Sheet < ActiveRecord::Base
   validates :mark1, numericality: {less_than_or_equal_to: 5}
   validates :mark1, numericality: {greater_than_or_equal_to: 0}
   validates :mark1, numericality: {only_integer: true}
-  validates :mark2, numericality: {less_than_or_equal_to: 5},
-                    numericality: {greater_than_or_equal_to: 0},
-                    numericality: {only_integer: true}
-  validates :mark3, numericality: {less_than_or_equal_to: 5},
-                    numericality: {greater_than_or_equal_to: 0},
-                    numericality: {only_integer: true}
-  validates :mark4, numericality: {less_than_or_equal_to: 5},
-                    numericality: {greater_than_or_equal_to: 0},
-                    numericality: {only_integer: true}
+  validates :mark2, numericality: {less_than_or_equal_to: 5}
+  validates :mark2, numericality: {greater_than_or_equal_to: 0}
+  validates :mark2, numericality: {only_integer: true}
+  validates :mark3, numericality: {less_than_or_equal_to: 5}
+  validates :mark3, numericality: {greater_than_or_equal_to: 0}
+  validates :mark3, numericality: {only_integer: true}
+  validates :mark4, numericality: {less_than_or_equal_to: 5}
+  validates :mark4, numericality: {greater_than_or_equal_to: 0}
+  validates :mark4, numericality: {only_integer: true}
   validate :student_must_be_different_from_partner
+
+  def student_experiment_must_be_unique
+    for s in Sheet.all
+      if (s.student.id == student_id) && (s.experiment_id == experiment_id)
+        errors.add(:base, "the student entered already has a mark for this experiment!")
+        return false
+      end
+    end
+    return true
+  end
 
   def student_must_be_different_from_partner    
     unless ( student_id != partner_id )

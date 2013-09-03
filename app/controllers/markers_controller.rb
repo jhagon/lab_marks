@@ -1,6 +1,7 @@
 class MarkersController < ApplicationController
   before_filter :authenticate, :only => [:edit, :update, :new, :destroy, :index]
   before_filter :correct_marker, :only => [:show]
+  helper_method :sort_column, :sort_direction
 
   def index
     @title = "List Markers"
@@ -11,6 +12,11 @@ class MarkersController < ApplicationController
   def show
     @title = "Show Marker"
     @marker = Marker.find(params[:id])
+    @sheets = @marker.sheets.paginate(:page => params[:page],
+             :per_page => 10).all( 
+             :joins => [:experiment, :student],
+             :order => "#{sort_column} #{sort_direction}")
+
   end
 
   def new
@@ -35,9 +41,13 @@ class MarkersController < ApplicationController
   end
 
   def update
+    # params[:marker].delete(:password) if params[:marker][:password].blank?
     @marker = Marker.find(params[:id])
     if @marker.update_attributes(params[:marker])
-      redirect_to @marker, :notice  => "Successfully updated marker."
+#    @marker = Marker.find(params[:id])
+#    if @marker.update_attributes(params[:marker])
+#      redirect_to @marker, :notice  => "Successfully updated marker."
+      redirect_to :back, :notice  => "Successfully updated marker."
     else
       render :action => 'edit'
     end
@@ -60,4 +70,14 @@ private
     @marker = Marker.find(params[:id])
     redirect_to(root_path) unless ( current_marker?(@marker) || is_admin? )
   end
+
+  def sort_column
+    cols = Sheet.column_names + Experiment.column_names + Student.column_names
+    cols.include?(params[:sort]) ? params[:sort] : "last"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 end

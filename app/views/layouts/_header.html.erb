@@ -5,9 +5,15 @@
     <% if signed_in? %>
       Signed in as
       <%= "#{current_marker.first} #{current_marker.last}" %>
+    <% else %>
+      Not signed in yet.
     <% end %>
     <ul>
-    <li><%= link_to "Home",    root_path %></li>
+    <% if signed_in? %>
+      <li><%= link_to "Home",    current_marker %></li>
+    <% else %>
+      <li><%= link_to "Home",    root_path %></li>
+    <% end %>
     <li><%= link_to "Help",    help_path %></li>
     <% if signed_in? %>
       <li><%= link_to "Sign out", signout_path, :method => :delete %></li>

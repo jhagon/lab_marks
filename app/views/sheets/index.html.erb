@@ -1,18 +1,23 @@
-<table>
+<%= will_paginate @sheets %>
+<table class="pretty">
   <tr>
-    <th>Student</th>
+    <th><%= sortable "last", "Student" %></th>
     <th>Partner</th>
-    <th>Experiment</th>
+    <th><%= sortable "title", "Experiment" %></th>
     <th>Marker</th>
+    <th><%= sortable "updated_at", "Updated" %></th>
     <th>Total</th>
     <th>Ret(%)</th>
   </tr>
   <% for sheet in @sheets %>
     <tr>
-      <td><%= "#{sheet.student.last},#{sheet.student.first}"%></td>
-      <td><%= "#{sheet.partner.last},#{sheet.partner.first}"%></td>
+      <td><%= truncate("#{sheet.student.last},#{sheet.student.first}",
+              length: 20, separator: ' ')%></td>
+      <td><%= truncate("#{sheet.partner.last},#{sheet.partner.first}",
+              length: 20, separator: ' ')%></td>
       <td><%= sheet.experiment.title %></td>
       <td><%= sheet.marker.abbr %></td>
+      <td><%= sheet.updated_at %></td>
       <td style="text-align:center;"><%= sheet.total_mark %></td>
       <td style="text-align:center;"><%= (100 * sheet.return_mark).to_i %></td>
       <td><%= link_to "Show", sheet %></td>
