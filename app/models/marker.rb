@@ -41,7 +41,9 @@ class Marker < ActiveRecord::Base
 
   validates :password, :presence	=> true,
                        :confirmation	=> true,
-                       :length		=> { :within => 6..40 }
+                       :length		=> { :minimum => 6 }, on: :create
+
+  before_update :check_password
 
   before_save :encrypt_password
 
@@ -87,4 +89,15 @@ class Marker < ActiveRecord::Base
     def secure_hash(string)
       Digest::SHA2.hexdigest(string)
     end
+
+    def check_password
+      is_ok = self.password.nil? || 
+              self.password.empty? || 
+              self.password.length >= 6
+
+      self.errors[:password] << "Password is too short (minimum is 6 characters)" unless is_ok
+
+      is_ok # return Boolean indicating success; if it fails, save is blocked
+    end
+
 end

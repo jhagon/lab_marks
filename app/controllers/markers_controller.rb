@@ -5,7 +5,7 @@ class MarkersController < ApplicationController
 
   def index
     @title = "List Markers"
-    @markers = Marker.all
+    @markers = Marker.order("last ASC")
   end
 
 
@@ -41,11 +41,8 @@ class MarkersController < ApplicationController
   end
 
   def update
-    # params[:marker].delete(:password) if params[:marker][:password].blank?
     @marker = Marker.find(params[:id])
     if @marker.update_attributes(params[:marker])
-#    @marker = Marker.find(params[:id])
-#    if @marker.update_attributes(params[:marker])
 #      redirect_to @marker, :notice  => "Successfully updated marker."
       redirect_to :back, :notice  => "Successfully updated marker."
     else

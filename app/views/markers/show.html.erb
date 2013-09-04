@@ -7,7 +7,7 @@
 
 <% unless @sheets.empty? %>
 
-<h3>Completed Mark Sheets</h3>
+<h3>Completed Mark Sheets (<%=@marker.sheets.size%>)</h3>
 <%= will_paginate @sheets %>
 <table class="pretty">
   <tr>
