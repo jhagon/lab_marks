@@ -20,7 +20,7 @@
       <td>
         <%= f.label :marker_id %><br />
         <%= collection_select(:sheet, :marker_id, Marker.all, :id, :name,
-    {:selected => current_marker.id}) %>
+    {:selected => @sheet.marker_id}) %>
       </td>
     </tr>
   </table>

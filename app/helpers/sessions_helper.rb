@@ -30,7 +30,7 @@ module SessionsHelper
   end
 
   def deny_access
-    redirect_to signin_path, :alert => "You must be signed in as an administrator to access this page."
+    redirect_to root_url, :alert => "You must be signed in as an administrator to access this page."
   end
 
   def sign_out

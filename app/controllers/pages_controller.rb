@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+
+  before_filter :authenticate, :only => [:statistics, :marklist]
+
   def home
     @title="Home"
   end
@@ -21,6 +24,19 @@ class PagesController < ApplicationController
     @experiments = Experiment.all
     @markers = Marker.all
     @average = overall_average
+  end
+
+  def marklist
+
+    @students = Student.paginate(:page => params[:page]).all(
+                         :order => "last ASC")
+    @experiments = Experiment.all(
+                         :order => "title ASC")
+
+    respond_to do |format|
+      format.html
+      format.xls
+    end
   end
 end
 
@@ -80,3 +96,21 @@ end
     end
     experiment_average = sum/n_markers
   end
+
+  def student_experiment_mark(student_id,experiment_id)
+    sheet = Sheet.where(
+     "student_id = #{student_id} AND experiment_id = #{experiment_id}")
+    if sheet.empty?
+      return ""
+    else
+      student_experiment_mark = 
+      (sheet.total_mark*1.0*sheet.marker.scaling*100/(MARK_UNIT*4))
+    end
+  end
+
+private
+
+  def authenticate
+    deny_access unless signed_in? && is_admin?
+  end
+

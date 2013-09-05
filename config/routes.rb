@@ -17,12 +17,14 @@ LabMarks::Application.routes.draw do
   match '/about',   	to: 'pages#about',      via: 'get'
   match '/statistics',  to: 'pages#statistics', via: 'get'
   match '/contact', 	to: 'pages#contact',    via: 'get'
+  match '/marklist', 	to: 'pages#marklist',   via: 'get'
 
   get "pages/home"
   get "pages/contact"
   get "pages/about"
   get "pages/help"
   get "pages/statistics"
+  get "pages/marklist"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

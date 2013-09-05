@@ -1,6 +1,7 @@
 class SheetsController < ApplicationController
 
-  before_filter :authenticate, :only => [:destroy]
+  before_filter :authenticate, :only => [:destroy, :index]
+  before_filter :correct_marker, :only => [:edit, :show]
   helper_method :sort_column, :sort_direction
 
   def index
@@ -11,7 +12,8 @@ class SheetsController < ApplicationController
 
   def show
     @sheet = Sheet.find(params[:id])
-    @returned_mark = (@sheet.total_mark * @sheet.marker.scaling / 20 ) * 100.0
+    @returned_mark = (@sheet.total_mark * @sheet.marker.scaling / 
+      (MARK_UNIT * NUM_CRITERIA) ) * 100.0
     @returned_mark = @returned_mark.to_int
     @title = "Show Mark Sheet"
   end
@@ -47,7 +49,7 @@ class SheetsController < ApplicationController
   def destroy
     @sheet = Sheet.find(params[:id])
     @sheet.destroy
-    redirect_to sheets_url, :notice => "Successfully destroyed sheet."
+    redirect_to :back, :notice => "Successfully destroyed sheet."
   end
 
 private
@@ -64,5 +66,14 @@ private
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
+
+  def correct_marker
+      if current_marker.nil?
+        deny_access
+      else
+        @sheet = current_marker.sheets.find_by(id: params[:id])
+        deny_access unless is_admin?  || !@sheet.nil?
+      end
+    end
 
 end

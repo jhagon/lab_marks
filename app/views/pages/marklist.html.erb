@@ -1,0 +1,42 @@
+<h1>Student Mark List</h1>
+<p style="float:right;">
+<%= link_to "Save to Excel", marklist_path(format: "xls") %></p>
+<%= will_paginate @students %>
+<table class="pretty">
+  <tr>
+    <th style="border-bottom:solid black 1pt;">Student</th>
+    <% for exp in @experiments %>
+      <th style="border-bottom:solid black 1pt;text-align:right"><%=exp.title%></th>
+    <% end %>
+    <th style="border-bottom:solid black 1pt;text-align:right">
+    Overall
+    </th>
+  </tr>
+
+  <% for student in @students %>
+
+    <tr>
+      <td><%= "#{student.last},#{student.first}" %></td>
+      <% overall_mark = 0 %>
+      <% divisor = MARK_UNIT * @experiments.size %>
+      <% for exp in @experiments %>
+        <% sheet = student.sheets.find_by experiment_id: exp.id %>
+        <% if sheet.nil? %>
+          <td></td>
+        <% else %>
+          <% scaled_sheet_total = sheet.total_mark*1.0*sheet.marker.scaling %>
+          <% scaled_sheet_total =
+               scaled_sheet_total > 20 ? 20 : scaled_sheet_total %>
+          <% overall_mark = overall_mark +
+                            scaled_sheet_total %>
+          <% ret_mark = scaled_sheet_total*100/(MARK_UNIT*NUM_CRITERIA) %>
+        <% ret_mark > 100 ? 100 : ret_mark %>
+        <td style="text-align:right"><%= ret_mark.round(0) %></td>
+        <% end %> 
+      <% end %>          
+      <td style="text-align:right"><%= overall_mark.round(0) %></td>
+
+      </tr>
+
+  <% end %>
+</table>
