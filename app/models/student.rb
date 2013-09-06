@@ -12,7 +12,7 @@
 #
 
 class Student < ActiveRecord::Base
-  attr_accessible :number, :first, :middle, :last, :email
+  attr_accessible :number, :first, :last, :email
 
   has_many :sheets
   has_many :sheets, :class_name => 'Sheet', :foreign_key => 'partner_id'
@@ -20,4 +20,11 @@ class Student < ActiveRecord::Base
   def name    
     self.last + ',  ' + self.first  
   end
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      Student.create! row.to_hash
+    end
+  end
+
 end

@@ -19,4 +19,9 @@
   <% end %>
 </table>
 
-<p><%= link_to "New Student", new_student_path %></p>
+<p><%= link_to "New Student", new_student_path %>
+<%= form_tag import_students_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+</p>

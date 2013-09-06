@@ -51,7 +51,11 @@ end
       scale = sheet.marker.scaling
       sum = sum + scale * (mark1 + mark2 + mark3 +mark4)
     end
-    overall_average = sum/n_sheets
+    if n_sheets == 0
+     overall_average = nil
+    else
+     overall_average = sum/n_sheets
+    end
   end
 
   def marker_average(marker_id)
@@ -94,7 +98,11 @@ end
         sum = sum + marker_experiment_average(marker.id, experiment_id)
       end
     end
-    experiment_average = sum/n_markers
+    if (n_markers == 0) 
+      experiment_average = nil
+    else
+      experiment_average = sum/n_markers
+    end
   end
 
   def student_experiment_mark(student_id,experiment_id)

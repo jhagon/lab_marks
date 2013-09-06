@@ -10,6 +10,11 @@ class StudentsController < ApplicationController
 
   end
 
+  def import
+  Student.import(params[:file])
+  redirect_to students_path, notice: "Students imported."
+  end
+
   def show
     @title = "Show Student"
     @student = Student.find(params[:id])

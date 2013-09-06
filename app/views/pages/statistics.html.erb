@@ -6,11 +6,11 @@ below is the average mark matrix across all markers and experiments.
   <tr>
     <th style="border-bottom:solid black 1pt;">Marker</th>
     <th style="border-bottom:solid black 1pt;">Scaling</th>
-    <th style="text-align:right;border-bottom:solid black 1pt;">Exp1</th>
-    <th style="text-align:right;border-bottom:solid black 1pt;">Exp2</th>
-    <th style="text-align:right;border-bottom:solid black 1pt;">Exp3</th>
-    <th style="text-align:right;border-bottom:solid black 1pt;">Exp4</th>
-    <th style="text-align:right;border-bottom:solid black 1pt;">Exp5</th>
+
+    <% for experiment in @experiments %>
+
+    <th style="text-align:right;border-bottom:solid black 1pt;">experiment.title</th>
+    <% end %>
     <th style="text-align:right;border-bottom:solid black 1pt;">MrkAv</th>
   </tr>
   <% for marker in @markers %>

@@ -8,6 +8,10 @@ LabMarks::Application.routes.draw do
   resources :markers
   resources :sessions, :only => [:new, :create, :destroy]
 
+  resources :students do
+    collection { post :import }
+  end
+
   root  'pages#home'
 
   match '/signup',  	to: 'markers#new',      via: 'get'
