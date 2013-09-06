@@ -41,6 +41,7 @@ class Sheet < ActiveRecord::Base
   validates :mark4, numericality: {greater_than_or_equal_to: 0}
   validates :mark4, numericality: {only_integer: true}
   validate :student_must_be_different_from_partner
+  validate :student_and_experiment_must_be_unique
 
   def student_experiment_must_be_unique
     for s in Sheet.all
@@ -55,6 +56,13 @@ class Sheet < ActiveRecord::Base
   def student_must_be_different_from_partner    
     unless ( student_id != partner_id )
       errors.add(:base, "student and partner must be different!")
+    end
+  end
+
+  def student_and_experiment_must_be_unique
+    unless (Sheet.where( :student_id => student_id, 
+                         :experiment_id => experiment_id).empty?)
+      errors.add(:base, "the student already has a mark for this experiment!")
     end
   end
 

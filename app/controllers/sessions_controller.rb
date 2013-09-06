@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
                                  params[:session][:password])
     if marker.nil?
       @title = "Sign In"
-      redirect_to signin_path, :alert => "Invalid email/password combination."
+      redirect_to root_path, :alert => "Invalid email/password combination."
     else
       sign_in marker
       redirect_to marker
