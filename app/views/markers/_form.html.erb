@@ -16,9 +16,7 @@
     <%= f.label :abbr, "Abbreviation" %><br />
     <%= f.text_field :abbr %>
   </p>
-  <p>
-    <%= f.label :scaling, "Scaling Factor" %><br />
-    <%= f.text_field :scaling %>
+    <%= f.hidden_field :scaling, value: 1.0 %>
   </p>
   <p>
   <%= f.check_box :admin %><%= f.label(:admin, "Administrator?") %>
