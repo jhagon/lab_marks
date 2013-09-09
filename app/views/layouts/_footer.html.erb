@@ -1,5 +1,8 @@
-<footer>
-  <nav class="round">
+<footer class="footer">
+  <small>
+    LabMarks v0.1 JPH
+  </small>
+  <nav>
     <% if is_admin? %>
     <ul>
     <li><%= link_to "Mark List",    "/marklist" %></li>
@@ -18,4 +21,5 @@
     </ul>
     <% end %>
   </nav>
-</header>
+    <%= debug(params) if Rails.env.development? %>
+</footer>

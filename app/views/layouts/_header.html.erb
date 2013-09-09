@@ -1,25 +1,32 @@
-<header>
-  <%= image_tag("logo.png", :alt => "LabMarks", :text => "LabMarks",
-                            :class => "round") %>
-  <nav class="round">
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "sample app", '#', id: "logo" %>
+      <nav>
+
+    <ul class="nav pull-right">
     <% if signed_in? %>
-      Signed in as
-      <%= "#{current_marker.first} #{current_marker.last}" %>
-    <% else %>
-      Not signed in yet.
-    <% end %>
-    <ul>
-    <% if signed_in? %>
-      <li><%= link_to "Home",    current_marker %></li>
+
+      <li id="fat-menu" class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+Account<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_marker %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Sign out", signout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
     <% else %>
       <li><%= link_to "Home",    root_path %></li>
     <% end %>
     <li><%= link_to "Help",    help_path %></li>
-    <% if signed_in? %>
-      <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
-    <% else %>
+    <% unless signed_in? %>
       <li><%= link_to "Sign in", signin_path %></li>
     <% end %>
     </ul>
-  </nav>
+      </nav>
+    </div>
+  </div>
 </header>

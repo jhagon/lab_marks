@@ -42,6 +42,9 @@ gem 'dynamic_form'
 # Use will_paginate to paginate index pages.
 gem 'will_paginate', '~> 3.0'
 
+# Use bbotstrap-sass for improved CSS structure and appearance
+gem 'bootstrap-sass'
+
 group :development, :test do
   gem 'rspec'
   gem 'webrat'
