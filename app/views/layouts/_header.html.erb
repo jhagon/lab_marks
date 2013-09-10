@@ -1,7 +1,9 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "sample app", '#', id: "logo" %>
+      <%= link_to root_path, id: "logo" do %>
+        <span style="color:#f00;">Lab</span><span style="color:#66f;">Marks</span>
+      <% end %>
       <nav>
 
     <ul class="nav pull-right">
@@ -12,6 +14,19 @@
 Account<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Profile", current_marker %></li>
+                <li class="divider"></li>
+    <% if is_admin? %>
+    <li><%= link_to "Mark List",    "/marklist" %></li>
+    <li><%= link_to "Statistics",    "/statistics" %></li>
+    <li><%= link_to "Experiments",    experiments_path %></li>
+    <li><%= link_to "Mark Sheets",    sheets_path %></li>
+    <li><%= link_to "Students",    students_path %></li>
+    <li><%= link_to "Markers",    markers_path %></li>
+    <% else %>
+    <li><%= link_to "About",    about_path %></li>
+    <li><%= link_to "Contact",    contact_path %></li>
+    <% end %>
+
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Sign out", signout_path, method: "delete" %>

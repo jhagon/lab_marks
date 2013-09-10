@@ -2,14 +2,14 @@
 <p>
 below is the average mark matrix across all markers and experiments.
 </p>
-<table class="no-zebra">
+<table class="table table-striped">
   <tr>
     <th style="border-bottom:solid black 1pt;">Marker</th>
     <th style="border-bottom:solid black 1pt;">Scaling</th>
 
     <% for experiment in @experiments %>
 
-    <th style="text-align:right;border-bottom:solid black 1pt;">experiment.title</th>
+    <th style="text-align:right;border-bottom:solid black 1pt;"><%=experiment.title %></th>
     <% end %>
     <th style="text-align:right;border-bottom:solid black 1pt;">MrkAv</th>
   </tr>

@@ -1,8 +1,9 @@
 <h1>Student Mark List</h1>
 <p style="float:right;">
-<%= link_to "Save to Excel", marklist_path(format: "xls") %></p>
+<%= link_to "Save to Excel",
+    marklist_path(format: "xls"), :class => 'btn btn-primary btn-xs' %></p>
 <%= will_paginate @students %>
-<table class="pretty">
+<table class="table table-striped">
   <tr>
     <th style="border-bottom:solid black 1pt;">Student</th>
     <% for exp in @experiments %>

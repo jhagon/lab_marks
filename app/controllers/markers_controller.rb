@@ -13,7 +13,7 @@ class MarkersController < ApplicationController
     @title = "Show Marker"
     @marker = Marker.find(params[:id])
     @sheets = @marker.sheets.paginate(:page => params[:page],
-             :per_page => 10).all( 
+             :per_page => 8).all( 
              :joins => [:experiment, :student],
              :order => "#{sort_column} #{sort_direction}")
 
@@ -28,7 +28,7 @@ class MarkersController < ApplicationController
     @marker = Marker.new(params[:marker])
     if @marker.save
       # handle a successful save 
-      redirect_to @marker, :notice => "Successfully created marker."
+      redirect_to markers_path, :notice => "Successfully created marker."
     else
       @title = "New Marker"
       render 'new'

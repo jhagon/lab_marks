@@ -1,13 +1,14 @@
 <%= will_paginate @sheets %>
-<table class="pretty">
+<table class="table table-striped">
   <tr>
     <th><%= sortable "last", "Student" %></th>
     <th>Partner</th>
-    <th><%= sortable "title", "Experiment" %></th>
+    <th><%= sortable "title", "Exp" %></th>
     <th>Marker</th>
     <th><%= sortable "updated_at", "Updated" %></th>
     <th>Total</th>
     <th>Ret(%)</th>
+    <th colspan="3">Actions</th>
   </tr>
   <% for sheet in @sheets %>
     <tr>
@@ -20,15 +21,20 @@
       <td><%= sheet.updated_at %></td>
       <td style="text-align:center;"><%= sheet.total_mark %></td>
       <td style="text-align:center;"><%= (100 * sheet.return_mark).to_i %></td>
-      <td><%= link_to "Show", sheet %></td>
-      <td><%= link_to "Edit", edit_sheet_path(sheet) %></td>
+      <td><%= link_to "Show", sheet,
+              :class => 'btn btn-success btn-xs' %></td>
+      <td><%= link_to "Edit", edit_sheet_path(sheet),
+              :class => 'btn btn-warning btn-xs' %></td>
       </td>
       <td><% if is_admin? %>
-        <%= link_to "Destroy", sheet, :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to "Destroy", sheet, 
+            :confirm => 'Are you sure?', 
+            :method => :delete, :class => 'btn btn-primary btn-xs' %>
       <% end %>
       </td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Sheet", new_sheet_path %></p>
+<p><%= link_to "New Sheet", new_sheet_path,
+       :class => 'btn btn-primary btn-xs' %></p>

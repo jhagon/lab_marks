@@ -1,8 +1,10 @@
 <footer class="footer">
+  <div class="container">
+
   <small>
     LabMarks v0.1 JPH
   </small>
-  <nav>
+<!--  <nav>
     <% if is_admin? %>
     <ul>
     <li><%= link_to "Mark List",    "/marklist" %></li>
@@ -11,15 +13,14 @@
     <li><%= link_to "Mark Sheets",    sheets_path %></li>
     <li><%= link_to "Students",    students_path %></li>
     <li><%= link_to "Markers",    markers_path %></li>
-    <li><%= link_to "School", "http://www.ncl.ac.uk/chemistry" %></li>
     </ul>
     <% else %>
     <ul>
     <li><%= link_to "About",    about_path %></li>
     <li><%= link_to "Contact",    contact_path %></li>
-    <li><%= link_to "School", "http://www.ncl.ac.uk/chemistry" %></li>
     </ul>
     <% end %>
-  </nav>
+  </nav> -->
     <%= debug(params) if Rails.env.development? %>
+  </div>
 </footer>

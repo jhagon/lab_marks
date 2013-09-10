@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "bootstrap-responsive";
 
 /* universal */
 
@@ -59,8 +60,8 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
+//  color: #fff;
+//  text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
@@ -130,7 +131,6 @@ input {
   @extend .error;
 }
 
-@import "bootstrap";
 
 /* mixins, variables, etc. */
 
@@ -152,3 +152,10 @@ $grayMediumLight: #eaeaea;
   @include box_sizing;
 }
 
+.pretty th .asc { 
+  background-image: url(/images/up_arrow.gif); 
+}
+
+.pretty th .desc { 
+  background-image: url(/images/down_arrow.gif); 
+}

@@ -2,14 +2,17 @@
 <p>
     <b>EMail: </b><%= @marker.email %>
     &nbsp;&nbsp;&nbsp;
-    <b>Abbreviation:</b><%= @marker.abbr %>
+    <b>Abbreviation: </b><%= @marker.abbr %>
 </p>
 
-<% unless @sheets.empty? %>
+<% if @sheets.empty? %>
+  <p>You have not yet created any mark sheets.</p>
 
-<h3>Completed Mark Sheets (<%=@marker.sheets.size%>)</h3>
+<% else %>
+
+<p><%=@marker.sheets.size%> completed mark sheets.</p>
 <%= will_paginate @sheets %>
-<table class="pretty">
+<table class="table table-striped">
   <tr>
     <th><%= sortable "last", "Student" %></th>
     <th>Partner</th>
@@ -17,6 +20,7 @@
     <th><%= sortable "updated_at", "Updated" %></th>
     <th>Total</th>
     <th>Ret(%)</th>
+    <th colspan="3">Actions</th>
   </tr>
   <% for sheet in @sheets %>
     <tr>
@@ -28,11 +32,15 @@
       <td><%= sheet.updated_at %></td>
       <td style="text-align:center;"><%= sheet.total_mark %></td>
       <td style="text-align:center;"><%= (100 * sheet.return_mark).to_i %></td>
-      <td><%= link_to "Show", sheet %></td>
-      <td><%= link_to "Edit", edit_sheet_path(sheet) %></td>
+      <td><%= link_to "Show", sheet,
+              :class => 'btn btn-success btn-xs' %></td>
+      <td><%= link_to "Edit", edit_sheet_path(sheet),
+              :class => 'btn btn-warning btn-xs' %></td>
       </td>
       <td><% if is_admin? %>
-        <%= link_to "Destroy", sheet, :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to "Destroy", sheet, 
+            :confirm => 'Are you sure?', 
+            :method => :delete, :class => 'btn btn-danger btn-xs' %>
       <% end %>
       </td>
     </tr>
@@ -41,5 +49,6 @@
 
 <% end %>
 
-<p><%= link_to "Create New Mark Sheet", new_sheet_path %></p>
+<p><%= link_to "Create New Mark Sheet", new_sheet_path,
+               :class => 'btn btn-primary btn-xs' %></p>
 

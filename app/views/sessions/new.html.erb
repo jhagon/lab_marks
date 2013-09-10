@@ -4,17 +4,24 @@
   <div class="span6 offset3">
 
 <%= form_for(:session, :url => sessions_path) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br/>
+  <fieldset>
+    <div class="control-group">
+    <%= f.label :email, class: "control-label" %><br/>
+    <div class="controls">
     <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br/>
+    </div>
+    </div>
+    <div class="control-group">
+    <%= f.label :password, class: "control-label"%><br/>
+    <div class="controls">
     <%= f.password_field :password %>
-  </div>
-  <div class="actions">
+    </div>
+    </div>
+    <div class="controls">
     <%= f.submit "Sign In", class: "btn btn-large btn-primary" %>
-  </div>
+    </div>
+  </fieldset>
+
 </div>
 </div>
 
