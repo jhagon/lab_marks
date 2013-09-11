@@ -3,7 +3,7 @@
 <%= link_to "Save to Excel",
     marklist_path(format: "xls"), :class => 'btn btn-primary btn-xs' %></p>
 <%= will_paginate @students %>
-<table class="table table-striped">
+<table class="table table-condensed table-striped">
   <tr>
     <th style="border-bottom:solid black 1pt;">Student</th>
     <% for exp in @experiments %>
@@ -41,3 +41,8 @@
 
   <% end %>
 </table>
+
+<p>
+  <%= link_to "Back", :back,
+  class: "btn btn-primary btn-xs" %>
+</p>

@@ -40,7 +40,9 @@ class Sheet < ActiveRecord::Base
   validates :mark4, numericality: {less_than_or_equal_to: 5}
   validates :mark4, numericality: {greater_than_or_equal_to: 0}
   validates :mark4, numericality: {only_integer: true}
-  validates :student_id, :uniqueness => {:scope => :experiment_id}
+  validates :student_id, :uniqueness => {:scope => :experiment_id,
+            :message => "already has a mark sheet for this experiment."}
+                         
   validate :student_must_be_different_from_partner
 
   def student_experiment_must_be_unique

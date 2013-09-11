@@ -1,6 +1,8 @@
 <%= render 'form' %>
 
 <p>
-  <%= link_to "Show", @sheet %> |
-  <%= link_to "View All", sheets_path %>
+  <%= link_to "Show", @sheet,
+      class: "btn btn-primary btn-xs" %>
+  <%= link_to "Back", :back, 
+      class: "btn btn-primary btn-xs" %>
 </p>

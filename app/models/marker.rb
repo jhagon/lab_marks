@@ -33,7 +33,7 @@ class Marker < ActiveRecord::Base
   validates :email, :presence => true,
                     :format => { :with => email_regex },
                     :uniqueness => { :case_sensitive => false }
-  validates :abbr, :presence => true
+  validates :abbr, :presence => true, uniqueness: true
 
   validates :scaling, numericality: {greater_than_or_equal_to: 0}
 

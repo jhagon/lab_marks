@@ -20,10 +20,14 @@ below is the average mark matrix across all markers and experiments.
       <tr>
         <td><%= "#{marker.last},#{marker.first}" %></td>
         <td>
-        <%= form_for marker do |f| %>
+        <%= form_for(marker, :html => { :class => "form-horizontal" }) do |f| %>
         <%= f.error_messages %>
-        <%= f.text_field :scaling, :size => 5 %>
-        <%= f.submit "Update" %>
+        <div class="control-group">
+        <div class="control">
+        <%= f.text_field :scaling, :size => 1 %>
+        <%= f.submit "Update", class: "btn btn-primary btn-xs" %>
+        </div>
+        </div>
         <% end %>
         </td>
 

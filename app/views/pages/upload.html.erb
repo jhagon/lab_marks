@@ -1,0 +1,15 @@
+<h1>Data Upload</h1>
+<p>
+This page provides links which allow you to do bulk student data uploads
+from a CSV spreadsheet file.
+Simply use the browse button to select a file and then click the
+<b>Import</b> button.
+</p>
+<p>
+<%= form_tag import_students_path, multipart: true do %>
+  <%= file_field_tag :file %>
+</p>
+<p>
+  <%= submit_tag "Import", :class => "btn btn-primary btn-xs" %>
+</p>
+<% end %>

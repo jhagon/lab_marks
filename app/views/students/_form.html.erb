@@ -1,20 +1,34 @@
 <%= form_for @student do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :number %><br />
+  <%= render 'shared/error_messages', :object => f.object %>
+  <fieldset>
+  <legend>Create/Edit Student</legend>
+    <div class="control-group">
+    <%= f.label :number, class: "control-label" %>
+    <div class="controls">
     <%= f.text_field :number %>
-  </p>
-  <p>
-    <%= f.label :first %><br />
+    </div>
+    </div>
+    <div class="control-group">
+    <%= f.label :first, class: "control-label" %>
+    <div class="controls">
     <%= f.text_field :first %>
-  </p>
-  <p>
-    <%= f.label :last %><br />
+    </div>
+    </div>
+    <div class="control-group">
+    <%= f.label :last, class: "control-label" %>
+    <div class="controls">
     <%= f.text_field :last %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
+    </div>
+    </div>
+    <div class="control-group">
+    <%= f.label :email, class: "control-label" %>
+    <div class="controls">
     <%= f.text_field :email %>
-  </p>
-  <p><%= f.submit %></p>
+    </div>
+    </div>
+    <div class="form-actions">
+    <%= f.submit class: "btn btn-primary btn-xs"%>
+    </div>
+  </fieldset>
+
 <% end %>

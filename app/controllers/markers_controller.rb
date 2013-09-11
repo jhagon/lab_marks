@@ -13,7 +13,7 @@ class MarkersController < ApplicationController
     @title = "Show Marker"
     @marker = Marker.find(params[:id])
     @sheets = @marker.sheets.paginate(:page => params[:page],
-             :per_page => 8).all( 
+             :per_page => 10).all( 
              :joins => [:experiment, :student],
              :order => "#{sort_column} #{sort_direction}")
 

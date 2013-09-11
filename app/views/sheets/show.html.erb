@@ -1,20 +1,10 @@
   <div style="width:"400px;">
-  <div style="width:"400px;">
-  <nav class="bordered">
-    <ul>
-    <li><%= link_to "Edit", edit_sheet_path(@sheet) %> </li>
-    <% if is_admin? %>
-      <li><%= link_to "Destroy", @sheet, :confirm => 'Are you sure?', :method => :delete %> </li>
-      <li><%= link_to "View All", current_marker %></li>
-    <% end %>
-    </ul>
-  </nav>
   <p style="font-size:small;">
   Marksheet created at: <%= @sheet.created_at %>;
   last modified by marker at <%= @sheet.updated_at %>.
   </p>
   </div>
-  <table class="no-zebra">
+  <table class="table">
     <tr style="background:#eef;">
       <td>
         <b>Student:</b> 
@@ -39,7 +29,7 @@
 
   <div style="width:40%;float:right">
     <b>Marks Breakdown</b><br />
-    <table class="no-zebra">
+    <table class="table-condensed">
       <tr>
         <td> <%= MARK1_CRITERION %></td>
         <td style="text-align:right;"> <%= @sheet.mark1 %> </td>
@@ -62,7 +52,7 @@
       </tr>
       <tr class="border-top-thick">
         <td> Returned Mark (%)</td>
-        <td style="text-align:right;"> <%= @returned_mark %> </td>
+        <td style="text-align:right;"> <b><%= @returned_mark %></b> </td>
       </tr>
     </table>
   </div>
@@ -72,4 +62,18 @@
       <%= @sheet.comments %>
     </div>
   </div>
+  <hr/>
+    <p>
+    <ul class="inline">
+    <li><%= link_to "Edit", edit_sheet_path(@sheet),
+        class: "btn btn-warning btn-xs" %> </li>
+    <% if is_admin? %>
+      <li><%= link_to "Destroy", @sheet, 
+          :confirm => 'Are you sure?', 
+          :method => :delete, class: "btn btn-danger btn-xs" %> </li>
+      <li><%= link_to "View All", current_marker,
+          class: "btn btn-primary btn-xs" %></li>
+    <% end %>
+    </ul>
+    </p>
 </div>

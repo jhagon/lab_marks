@@ -22,4 +22,4 @@ MARK_UNIT = 5
 
 # Default PER_PAGE for pagination.
 
-WillPaginate.per_page = 12
+WillPaginate.per_page = 10

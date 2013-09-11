@@ -1,12 +1,22 @@
 <%= form_for @experiment do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :title %><br />
+  <%= render 'shared/error_messages', :object => f.object  %>
+  <fieldset>
+  <legend>Create/Edit Experiment</legend>
+    <div class="control-group">
+    <%= f.label :title, class: "control-label" %>
+    <div class="controls">
     <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :desc %><br />
+    </div>
+    </div>
+    <div class="control-group">
+    <%= f.label :desc, "Description", class: "control-label" %>
+    <div class="controls">
     <%= f.text_area :desc %>
-  </p>
-  <p><%= f.submit %></p>
+    </div>
+    </div>
+    <div class="form-actions">
+    <%= f.submit class: "btn btn-primary btn-xs" %>
+    </div>
+  </fieldset>
+
 <% end %>

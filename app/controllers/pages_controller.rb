@@ -26,9 +26,13 @@ class PagesController < ApplicationController
     @average = overall_average
   end
 
+  def upload
+    @title="Upload Data"
+  end
+
   def marklist
 
-    @students = Student.paginate(:page => params[:page]).all(
+    @students = Student.paginate(:page => params[:page]).per_page(12).all(
                          :order => "last ASC")
     @experiments = Experiment.all(
                          :order => "title ASC")
