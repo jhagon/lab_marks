@@ -1,7 +1,12 @@
   <div style="width:"400px;">
   <p style="font-size:small;">
-  Marksheet created at: <%= @sheet.created_at %>;
-  last modified by marker at <%= @sheet.updated_at %>.
+  Marksheet #<%= @sheet.id %> 
+  <%= @sheet.created_at.nil? ? 
+      "<span style='color:red;'>Creation date not available!</span>".html_safe :
+      "Created at: #{@sheet.created_at}" %>;
+  <%= @sheet.updated_at.nil? ? 
+      "<span style='color:red;'>Last modification date not available!</span>".html_safe : 
+      "Last modified at: #{@sheet.updated_at}" %>.
   </p>
   </div>
   <table class="table">
@@ -30,7 +35,7 @@
   <div style="width:40%;float:right">
     <b>Marks Breakdown</b><br />
     <table class="table-condensed">
-      <tr>
+      <tr style="border-top:solid black 1pt;">
         <td> <%= MARK1_CRITERION %></td>
         <td style="text-align:right;"> <%= @sheet.mark1 %> </td>
       </tr>
@@ -68,12 +73,11 @@
     <li><%= link_to "Edit", edit_sheet_path(@sheet),
         class: "btn btn-warning btn-xs" %> </li>
     <% if is_admin? %>
-      <li><%= link_to "Destroy", @sheet, 
-          :confirm => 'Are you sure?', 
-          :method => :delete, class: "btn btn-danger btn-xs" %> </li>
       <li><%= link_to "View All", current_marker,
           class: "btn btn-primary btn-xs" %></li>
     <% end %>
+    <li><%= link_to "Back", :back,
+        class: "btn btn-primary btn-xs" %> </li>
     </ul>
     </p>
 </div>

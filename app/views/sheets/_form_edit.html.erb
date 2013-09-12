@@ -1,7 +1,7 @@
 <%= form_for(@sheet, :html => {:class => "form-horizontal" }) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <fieldset>
-  <legend>Create/Edit Mark Sheet</legend>
+  <legend>Edit Mark Sheet <%= @sheet.id %></legend>
   <div style="width:"400px">
   <table class="table table-compact">
     <tr style="background:#eef;">
@@ -32,6 +32,7 @@
         </div>
       </td>
       <td>
+        <% if is_admin? %>
         <div class="control-group">
         <%= f.label :marker_id, class: "control-label" %>
         <div class="controls">
@@ -39,6 +40,15 @@
     {:selected => @sheet.marker_id}) %>
         </div>
         </div>
+        <% else %>
+        <div class="control-group">
+        <%= f.label :marker_id, class: "control-label" %>
+        <div class="controls">
+        <%= collection_select(:sheet, :marker_id, Marker.all, :id, :name,
+    {:selected => @sheet.marker_id}, :disabled => true) %>
+        </div>
+        </div>
+        <% end %>
       </td>
     </tr>
   </table>

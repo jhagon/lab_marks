@@ -18,10 +18,16 @@ class StudentsController < ApplicationController
   def show
     @title = "Show Student"
     @student = Student.find(params[:id])
-    @sheets = @student.sheets.paginate(:page => params[:page],
-             :per_page => 10).all(
-             :joins => [:experiment, :marker],
-             :order => "#{sort_column} #{sort_direction}")
+#
+# can't use @student.sheets here because partner_id was declared
+# as a foreign key and seems to take precedence. In other words
+# @student.sheets returns all the sheets where the student is a
+# partner rather than the student being marked.
+#
+    @sheets = Sheet.where("student_id = #{@student.id}").paginate(:page => params[:page],
+    :per_page => 10).all(
+    :joins => [:experiment, :marker],
+    :order => "#{sort_column} #{sort_direction}")
 
   end
 

@@ -25,6 +25,9 @@ class SheetsController < ApplicationController
 
   def create
     @sheet = Sheet.new(params[:sheet])
+    unless is_admin?
+      @sheet.marker_id = current_marker.id
+    end
     if @sheet.save
       redirect_to @sheet, :notice => "Successfully created sheet."
     else
