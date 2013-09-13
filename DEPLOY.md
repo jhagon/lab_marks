@@ -9,3 +9,14 @@ config.assets.compile = true
 config.assets.digest = true
 config.assets.initialize_on_precompile = false
 ```
+
+Will_Paginate in Production Mode
+================================
+For some reason, Will_Paginate does not read its default PER_PAGE from the
+`config/environment.rb` file. Had to put
+
+```
+WillPaginate.per_page = 10
+```
+
+in the `config/environments/production.rb` file to get it to work.

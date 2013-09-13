@@ -28,8 +28,4 @@
 
 <p><%= link_to "New Student", new_student_path,
        :class => "btn btn-primary btn-xs"%>
-<%= form_tag import_students_path, multipart: true, class: "form-inline" do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import", :class => "btn btn-primary btn-xs" %>
-<% end %>
 </p>

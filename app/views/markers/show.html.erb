@@ -3,14 +3,15 @@
     <b>EMail: </b><%= @marker.email %>
     &nbsp;&nbsp;&nbsp;
     <b>Abbreviation: </b><%= @marker.abbr %>
-</p>
+    &nbsp;&nbsp;&nbsp;
 
 <% if @sheets.empty? %>
-  <p>You have not yet created any mark sheets.</p>
+  You have not yet created any mark sheets.
 
 <% else %>
 
-<p><%=@marker.sheets.size%> completed mark sheets.</p>
+<b>Completed mark sheets: </b><%=@marker.sheets.size%>
+</p>
 <%= will_paginate @sheets %>
 <table class="table table-condensed table-striped">
   <tr>
