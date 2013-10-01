@@ -1,3 +1,14 @@
+Initializing a New Production Database
+====================================
+The correct order to setup database in production, with all the rake task 
+available within db namespace is as below
+ 
+```
+$rake db:create RAILS_ENV=production
+$rake db:migrate RAILS_ENV=production
+$ rake db:seed RAILS_ENV=production
+```
+
 Stylesheets and Image Assets
 ============================
 To get assets such as images, stylesheets served, may need to set these
